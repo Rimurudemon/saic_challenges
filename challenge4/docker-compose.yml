@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  app0:
+    image: metavinayak/matrix:latest
+    ports:
+      - "10000:3000" # Change the container port if needed
+    networks:
+      - my-network
+  app1:
+    image: metavinayak/matrix:latest
+    ports:
+      - "10001:3000" # Change the container port if needed
+    networks:
+      - my-network
+  app2:
+    image: metavinayak/matrix:latest
+    ports:
+      - "10002:3000" # Change the container port if needed
+    networks:
+      - my-network
+  app3:
+    image: metavinayak/matrix:latest
+    ports:
+      - "10003:3000" # Change the container port if needed
+    networks:
+      - my-network
+  app4:
+    image: metavinayak/matrix:latest
+    ports:
+      - "10004:3000" # Change the container port if needed
+    networks:
+      - my-network
+
+networks:
+  my-network:
