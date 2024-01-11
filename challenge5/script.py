@@ -10,8 +10,11 @@ payload={
 }
 
 with requests.Session() as s:
-    p = s.post(login_url, data=payload)
-    r = s.get(homepage_url)
+    p = s.get(login_url)
+    soup = BeautifulSoup(p.content, 'lxml')
+    payload['logintoken'] = soup.find('input', attrs={'name': 'logintoken'})['value']
+    r = s.post(login_url, data=payload)
     soup = BeautifulSoup(r.content, 'lxml')
-    course_links = soup.find_all('a', class_="pointer-hover")
-    print(course_links)
+    print(soup.prettify())
+    course_links = soup.find_all('a', hre)
+    # print(course_links)

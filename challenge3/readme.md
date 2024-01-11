@@ -7,11 +7,23 @@ This question required us to solve three inlayed questions: 1. Host both the sit
    This was the result:
    ![Alt text](image.png)
    ![Alt text](image-1.png)
-   ######## Hosting the second part was a bit tricky and took a lot of time and I mean a lot. Running it simply wa snot a choice from the start as it gave out the following error:
+   ######## Hosting the second part was a bit tricky and took a lot of time and I mean a lot. Running it simply was not a choice from the start as it gave out the following error:
    ![Alt text](image-2.png)
    upon analysing the error using google aand other online sources I found out that one of the gems in the file was not able to run due to a missing JavaScript runtime. I tried to install nodejs and other stuff but it did not work because the ruby version used in the website deatils was very old(almost 7 years back,ruby 2.3.1) and same was the problem with the bundler(old!,version 1.12.5){these were also found after hours of banging my head on the wall for hosting the script}. Therefore after hours of calliberating the correct version, it was very heartbreaking to see the javascript runtime error.
-   The gem causing the issue was called the 'uglifier gem' which on further research I found out that it was used to minify the javascript code. Therefore I removed the gem from the gemfile and the script ran successfully. The following is the script:
+   The gem causing the issue was called the 'uglifier gem' which on further research I found out that it was used to minify the javascript code. So after hours of searchiing the web for literal bits of this gem and js runtime I found the the og "therubyracer" gem. It was based off of mini racer(which i had previously checked to run the gem file but an error was thrown to my face) but it was an ugraded based version. I then proceeded to add the {gem therubyracer} to the existing gemfile of the github-lannguages. I then built the image and it ran beautifully:
+   ![Alt text](image-5.png)
+   ![Alt text](image-7.png)
+   I then ran script give below to host the website in the port 8080:
+   The following is the script:
    script: [Title](problem3b/Dockerfile)##################
+   ![Alt text](image-6.png)
+   ![Alt text](image-8.png)
+   After running the script I saw the site being hosted on the port 8080 but it gave me the error:
+   ![Alt text](image-9.png)
+   I then proceeded to google the error and found out that the error was due to the fact that the database was not migrated. I had less time and therefore proceeded to skip importing the database and just left the site as it is.
+   I had hosted both the sites successfully and was very happy with the result.
+   I then proceeded to write the docker compose file to host the site1 at port 8080 and site2 at port 3000 and specified the network in the same. I wrote the following script:
+   script: [Title](docker-compose.yml)
 
 2. BACKUP SCRIPT:
    This was a relatively easy task compared to running that god awfull gem site. I did some googling and found that I had to use crontab for the question and wrote a script for regular data backup. I created the following script which best fit both the requirements:
