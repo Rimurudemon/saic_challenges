@@ -12,5 +12,6 @@ payload={
 with requests.Session() as s:
     p = s.post(login_url, data=payload)
     r = s.get(homepage_url)
-    soup = BeautifulSoup(r.content, 'html.parser')
-    print(soup.prettify())
+    soup = BeautifulSoup(r.content, 'lxml')
+    course_links = soup.find_all('a', class_="pointer-hover")
+    print(course_links)

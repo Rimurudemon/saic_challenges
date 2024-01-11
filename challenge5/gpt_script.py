@@ -14,7 +14,7 @@ with requests.Session() as s:
     p = s.post(login_url, data=payload)
     r = s.get(course_url)
     soup = BeautifulSoup(r.content, 'html.parser')
-
+    print(soup.prettify())
     assignment_links = []
 
     # Find all links within the course page

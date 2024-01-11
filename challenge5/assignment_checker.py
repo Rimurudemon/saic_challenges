@@ -2,27 +2,23 @@ import requests
 from bs4 import BeautifulSoup
 
 login_url = 'https://lms.iitmandi.ac.in/login/index.php'
-example_assignment_link = 'https://lms.iitmandi.ac.in/mod/assign/view.php?id=50348'
+course_url = 'https://lms.iitmandi.ac.in/course/view.php?id=3562'  # Example course URL
 
 payload = {
     'username': 'b23354',
-    'password': 'Piyush@2904'
+    'password': 'bhrle'
 }
 
 with requests.Session() as s:
     p = s.post(login_url, data=payload)
-    r = s.get(example_assignment_link)
-    soup = BeautifulSoup(r.content, 'html.parser')
+    r = s.get(course_url)
+    print(r).
+    # soup = BeautifulSoup(r.content, 'lxml')
+    # print(soup.prettify())
 
-    activity_dates = soup.find('div', class_='activity-dates')
-    if activity_dates:
-        opened_date = activity_dates.find('strong', text='Opened:')
-        due_date = activity_dates.find('strong', text='Due:')
+    # # Find all links within the course page
+    # all_links = soup.find_all('a', href=True)
+    # print(f"Found {len(all_links)} links in the course page.")
 
-        opened_date_text = opened_date.next_sibling.strip() if opened_date else "Opened date not found"
-        due_date_text = due_date.next_sibling.strip() if due_date else "Due date not found"
-
-        print(f"Opened Date: {opened_date_text}")
-        print(f"Due Date: {due_date_text}")
-    else:
-        print("No activity dates found.")
+    # for link in all_links:
+    #     print(link['href'])
