@@ -10,6 +10,7 @@ This question required us to solve three inlayed questions: 1. Host both the sit
    ######## Hosting the second part was a bit tricky and took a lot of time and I mean a lot. Running it simply was not a choice from the start as it gave out the following error:
    ![Alt text](image-2.png)
    upon analysing the error using google aand other online sources I found out that one of the gems in the file was not able to run due to a missing JavaScript runtime. I tried to install nodejs and other stuff but it did not work because the ruby version used in the website deatils was very old(almost 7 years back,ruby 2.3.1) and same was the problem with the bundler(old!,version 1.12.5){these were also found after hours of banging my head on the wall for hosting the script}. Therefore after hours of calliberating the correct version, it was very heartbreaking to see the javascript runtime error.
+
    The gem causing the issue was called the 'uglifier gem' which on further research I found out that it was used to minify the javascript code. So after hours of searchiing the web for literal bits of this gem and js runtime I found the the og "therubyracer" gem. It was based off of mini racer(which i had previously checked to run the gem file but an error was thrown to my face) but it was an ugraded based version. I then proceeded to add the {gem therubyracer} to the existing gemfile of the github-lannguages. I then built the image and it ran beautifully:
    ![Alt text](image-5.png)
    ![Alt text](image-7.png)

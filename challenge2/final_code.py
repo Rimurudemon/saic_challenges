@@ -4,7 +4,6 @@ from email.mime.multipart import MIMEMultipart
 import time
 import docker
 
-# Docker client setup
 client = docker.from_env()
 
 # adding the mailing service
@@ -26,7 +25,7 @@ def send_email(container_name, program_name, timestamp, exit_code):
 
     try:
         with smtplib.SMTP_SSL(smtp_server, smtp_port) as server:
-            server.set_debuglevel(1)  # Enable debug output
+            server.set_debuglevel(1)  
 
             server.login(sender_email, app_password)
             server.sendmail(sender_email, receiver_email, message.as_string())
